@@ -10,21 +10,22 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
+refs.stop.disabled = true;
 
 refs.start.addEventListener('click', () => {
   randomColor = setInterval(startRandomColor, 1000);
   refs.start.disabled = true;
+  refs.stop.disabled = false;
 });
 
 function startRandomColor() {
   document.body.style.backgroundColor = getRandomHexColor();
-  //   refs.stop.disabled = false;
 }
 
 refs.stop.addEventListener('click', stopRandomColor);
 
 function stopRandomColor() {
   refs.start.disabled = false;
-  //   refs.stop.disabled = true;
+  refs.stop.disabled = true;
   clearInterval(randomColor);
 }

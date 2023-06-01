@@ -35,17 +35,14 @@ img {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -khtml-border-radius: 3px;
-  background: #ffffff !important;
   outline: none;
   width: 310px;
   height: 25px;
-  color: #090000;
   font-size: 100%;
   font-family: Tahoma;
 }
 
 .input-class.focus {
-  color: #000000;
   border: 1px solid #000000;
 }
 
@@ -56,9 +53,12 @@ img {
 
   padding: 7px 0px;
 
-  border: none;
-  color: black;
-  font-style: oblique;
-  background-color: rgb(188, 188, 188);
+  border: 5px;
   border-radius: 4px;
+}
+
+.input-disabled {
+  color: #cccccc;
+  background-color: #000000;
+  font-size: small;
 }

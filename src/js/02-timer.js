@@ -25,6 +25,7 @@ refs.startBtn.classList.add('button');
 
 refs.startBtn.addEventListener('click', startCountdown);
 
+refs.startBtn.disabled = true;
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -38,14 +39,10 @@ const options = {
       Notiflix.Notify.failure('Please choose a date in the future');
     } else if (chosenDate > currentDate) {
       refs.startBtn.disabled = false;
-      refs.startBtn.addEventListener('click', () => {
-        startCountdown();
-      });
     }
   },
 };
 
-refs.startBtn.disabled = true;
 flatpickr('#datetime-picker', options);
 
 function convertMs(ms) {
@@ -85,6 +82,8 @@ function noTime() {
 
 function startCountdown() {
   if (chosenDate > currentDate) {
+    refs.input.disabled = true;
+    refs.input.classList.add('.input-disabled');
     intervalId = setInterval(() => {
       currentDate = new Date().getTime();
       const ms = Math.floor(chosenDate - currentDate);
@@ -92,6 +91,7 @@ function startCountdown() {
       if (ms <= 0) {
         // clearInterval(intervalId);
         noTime();
+        refs.input.disabled = false;
       }
     }, 1000);
   }
